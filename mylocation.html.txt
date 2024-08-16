@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Location Tracking</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <style>
+        #map { height: 100vh; }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+        // Initialize the map centered on a default location
+        var map = L.map('map').setView([0, 0], 2);
+
+        // Add a tile layer to the map
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+        }).addTo(map);
+
+        // Marker to show the live location
+        var marker = L.marker([0, 0]).addTo(map);
+
+        // Function to update the map with the current location
+        function updateLocation(lat, lng) {
+            map.setView([lat, lng], 13); // Zoom into the location
+            marker.setLatLng([lat, lng]); // Update the marker position
+        }
+
+        // Use the browser's Geolocation API to track the live location
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.watchPosition(function(position) {
+                    var lat = position.coords.latitude;
+                    var lng = position.coords.longitude;
+                    updateLocation(lat, lng);
+                }, function(error) {
+                    alert("Error getting location: " + error.message);
+                });
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+
+        // Start tracking the location when the page loads
+        getLocation();
+    </script>
+</body>
+</html>
