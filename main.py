@@ -5,7 +5,7 @@ from phonenumbers import geocoder
 #generates map centred on retrieved coordinates and places marker on that location
 import folium
 
-Key = "9c54d0897e3e401997a35bf587af57a3"
+Key = ""
 number = input("Enter phone number with country code: ")
 check_number = phonenumbers.parse(number)
 number_location = geocoder.description_for_number(check_number, "en")
