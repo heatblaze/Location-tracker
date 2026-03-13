@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CYBER-TRACK // GLOBAL UPLINK</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+<body>
+  <header class="dashboard-header">
+    <div class="header-title">
+      Global Node Surveillance
+    </div>
+    <div class="status-badge">
+      SYSTEM: ACTIVE // UPLINK: ENCRYPTED
+    </div>
+  </header>
+
+  <div id="map"></div>
+
+  <div class="map-overlay">
+    <div class="data-panel">
+      <div class="panel-row">
+        <span class="label">PROTO:</span>
+        <span class="value">WSS/SECURE</span>
+      </div>
+      <div class="panel-row">
+        <span class="label">NODES:</span>
+        <span class="value" id="node-count">1</span>
+      </div>
+      <div class="panel-row">
+        <span class="label">LATENCY:</span>
+        <span class="value">14ms</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="http://localhost:5000/socket.io/socket.io.js"></script>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
